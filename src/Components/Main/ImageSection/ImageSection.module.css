@@ -1,0 +1,25 @@
+.section{
+    height: 250px;
+    /* position: relative; */
+    margin-bottom: 120px;
+    background-image: url(../Images/meals.jpg);
+    background-position: center;
+    background-size: cover;
+    background-position:10% 100% ;
+    display: flex;
+    justify-content: center;
+    /* clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); */
+}
+
+.article {
+    position: absolute;
+    color:white;
+    background-color: rgb(83, 82, 82);
+    max-width: 400px;
+    border-radius: 10px;
+    top: 230px;
+    padding: 10px 10px ;
+    box-shadow: 2px 2px 9px 4px rgb(54, 54, 54);
+    /* z-index: ; */
+}
+

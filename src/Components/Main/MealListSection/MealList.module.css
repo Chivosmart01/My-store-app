@@ -1,0 +1,36 @@
+.meals {
+    background-color: white;
+    /* margin-top: 120px; */
+    max-width: 500px;
+    margin: 0 auto 0 auto;
+    list-style: none;
+    border-radius: 10px;
+    padding:0px 20px;
+    /* text-align: center; */
+}
+
+.meal{
+    padding:15px 0px;
+    /* border-bottom:0.5px solid rgb(83, 83, 83); */
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price{
+    color: brown;
+    font-weight: 700;
+}
+
+input {
+    width: 25px;
+}
+
+.button{
+    background-color: brown;
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    margin: 8px 0px 0px 10px;
+    border-radius: 15px;
+}

@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.header{
+    background-color: brown;
+    display: flex;
+    flex-basis: 50%;
+    align-items: center;
+    height: 50px;
+    justify-content: space-around;
+}
+
+.brandname h1{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: 29px;
+    padding: 6px 30px;
+    color: white;
+    background-color: rgb(80, 25, 25);
+}
+
+/* .cart button{
+    padding: 0;
+    background-color: inherit;
+} */
+
+.cartNumber {
+    /* text-align: center; */
+    background-color: brown;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
