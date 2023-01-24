@@ -27,10 +27,13 @@
     background-color: rgb(80, 25, 25);
 }
 
-/* .cart button{
+.cart button{
     padding: 0;
     background-color: inherit;
-} */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
 .cartNumber {
     /* text-align: center; */

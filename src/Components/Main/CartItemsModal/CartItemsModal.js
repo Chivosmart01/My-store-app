@@ -1,10 +1,14 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import styles from "./CartItemsModal.module.css";
 
-const CartItemsModal = (props) => {
+const Backdrop = (props) => {
+  return <div className={styles.backdrop} onClick={props.onRemoveModal}></div>;
+};
+
+const Modal = (props) => {
   return (
-    <section className={styles.overlays}>
-      <div className={styles.backdrop}></div>
+    <React.Fragment>
       <aside className={styles.modal}>
         <ul>
           <li>
@@ -21,7 +25,7 @@ const CartItemsModal = (props) => {
               <button className={styles.positivebtn}> + </button>
             </div>
           </li>
-          <hr></hr>
+          {/* <hr></hr>
           <li>
             <div>
               <h5>Schnitzel</h5>
@@ -35,8 +39,8 @@ const CartItemsModal = (props) => {
               <button className={styles.positivebtn}> + </button>
             </div>
           </li>
-          <hr></hr>
-          <li>
+          <hr></hr> */}
+          {/* <li>
             <div>
               <h5>Schnitzel</h5>
               <div className={styles.price}>
@@ -48,7 +52,7 @@ const CartItemsModal = (props) => {
               <button className={styles.negativebtn}> - </button>
               <button className={styles.positivebtn}> + </button>
             </div>
-          </li>
+          </li> */}
         </ul>
         <hr></hr>
         <div className={styles.totalMeals}>
@@ -56,12 +60,22 @@ const CartItemsModal = (props) => {
           <div className={styles.totalPrice}>
             <h4>$33.00</h4>
             <div>
-              <button className={styles.closeBtn}>Close</button>
+              <button onClick={props.onRemoveModal} className={styles.closeBtn}>Close</button>
               <button className={styles.orderBtn}>Order</button>
             </div>
           </div>
         </div>
       </aside>
+    </React.Fragment>
+  );
+};
+
+const CartItemsModal = (props) => {
+  return (
+  
+    <section className={styles.overlays}>
+     {ReactDOM.createPortal(<Backdrop onRemoveModal = {props.onRemoveModal}/>, document.getElementById("backdrop")) }
+      {ReactDOM.createPortal(<Modal onRemoveModal = {props.onRemoveModal}/>, document.getElementById("overlays")) }
     </section>
   );
 };

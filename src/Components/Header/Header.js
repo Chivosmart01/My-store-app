@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 
-import CartItemsModal from "../Main/CartItemsModal/CartItemsModal"
+import CartItemsModal from "../Main/CartItemsModal/CartItemsModal";
 import styles from "./Header.module.css";
 
 const Header = () => {
-    // const openModal = false
-    [modal, setModal] = useState()
+  const [modal, setModal] = useState();
 
-    const openModalHandler = () => {
-        setModal(true)
-    }
+  const openModalHandler = () => {
+    console.log(true)
+    setModal(true);
+  };
+
+  const removeModalHandler = () => {
+    setModal(false)
+  }
 
   return (
     <header className={styles.header}>
@@ -17,12 +21,12 @@ const Header = () => {
         <h1>ReactMeals</h1>
       </div>
       <div className={styles.cart}>
-        <h5 onClick = {openModalHandler} >Your cart</h5>
-        <div className ={styles.cartNumber}>
+        <button onClick={openModalHandler}>Your cart</button>
+        <div className={styles.cartNumber}>
           <p>0</p>
         </div>
       </div>
-     {openModal &&  <CartItemsModal />}
+      {modal && <CartItemsModal onRemoveModal={removeModalHandler}/>}
       {/* <CartItemsModal /> */}
     </header>
   );
