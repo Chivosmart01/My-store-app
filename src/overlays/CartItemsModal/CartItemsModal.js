@@ -60,7 +60,9 @@ const Modal = (props) => {
           <div className={styles.totalPrice}>
             <h4>$33.00</h4>
             <div>
-              <button onClick={props.onRemoveModal} className={styles.closeBtn}>Close</button>
+              <button onClick={props.onRemoveModal} className={styles.closeBtn}>
+                Close
+              </button>
               <button className={styles.orderBtn}>Order</button>
             </div>
           </div>
@@ -72,10 +74,15 @@ const Modal = (props) => {
 
 const CartItemsModal = (props) => {
   return (
-  
     <section className={styles.overlays}>
-     {ReactDOM.createPortal(<Backdrop onRemoveModal = {props.onRemoveModal}/>, document.getElementById("backdrop")) }
-      {ReactDOM.createPortal(<Modal onRemoveModal = {props.onRemoveModal}/>, document.getElementById("overlays")) }
+      {ReactDOM.createPortal(
+        <Backdrop onRemoveModal={props.onRemoveModal} />,
+        document.getElementById("backdrop")
+      )}
+      {ReactDOM.createPortal(
+        <Modal onRemoveModal={props.onRemoveModal} />,
+        document.getElementById("overlays")
+      )}
     </section>
   );
 };

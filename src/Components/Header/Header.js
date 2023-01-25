@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CartItemsModal from "../Main/CartItemsModal/CartItemsModal";
+import CartItemsModal from "../../overlays/CartItemsModal/CartItemsModal"
 import styles from "./Header.module.css";
 
 const Header = () => {
