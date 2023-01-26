@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from "react";
 
-export const AuthContext = React.createContext({
+const mealLists = [
+  { name: "Sushi", description: "Finest fish and veggies", price: "22.99" },
+  { name: "Schnitzel", description: "A german specialty!", price: "16.50" },
+  {
+    name: "Barbecue Burger",
+    description: "American, raw, meaty",
+    price: "12.99",
+  },
+  {
+    name: "Green Bowl",
+    description: "Healthy ...and green...",
+    price: "18.99",
+  },
+];
+
+const AuthContext = React.createContext({
   outputAmountCart: "",
-  addToCart:addToCart,
+  addToCart: () => {},
+  inputHandler: () => {},
+//   outPutToCartValues: outPutValues,
 });
 
 export const AuthContextProvider = (props) => {
@@ -13,10 +30,12 @@ export const AuthContextProvider = (props) => {
     setOutputAmountCart(inputValue);
   };
 
-  const addToCart = () => {
+  let outPutValues;
+
+  const addToCartHandler = (outPutValues) => {
     console.log(outputAmountCart);
 
-    const outPutValues = {
+    outPutValues = {
       name: mealLists.name,
       description: mealLists.description,
       amount: outputAmountCart,
@@ -27,9 +46,10 @@ export const AuthContextProvider = (props) => {
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn: isLoggedIn,
-        onLogout: logoutHandler,
-        onLogin: loginHandler,
+        outputAmountCart: outputAmountCart,
+        addToCart: addToCartHandler,
+        inputHandler: inputHandler,
+        outPutToCartValues: outPutValues,
       }}
     >
       {props.children}

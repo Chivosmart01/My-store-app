@@ -5,7 +5,7 @@ import ImageSection from "./ImageSection/ImageSection";
 import MealLists from "./MealListSection/MealList";
 // import CartItemsModal from "./CartItemsModal/CartItemsModal";
 
-const Main = () => {
+const Main = () => { 
   return (
     <main className={styles.main}>
       {/* <CartItemsModal /> */}

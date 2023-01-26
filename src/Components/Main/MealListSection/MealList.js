@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-
+import React, { useContext } from "react";
+// import AuthContext from "./store/auth-context";
+import AuthContext from "../../../store/auth-context";
 import styles from "./MealList.module.css";
 
 const mealLists = [
-  { name: "Sushi", description: "Finest fish and veggies",price: "22.99" },
+  { name: "Sushi", description: "Finest fish and veggies", price: "22.99" },
   { name: "Schnitzel", description: "A german specialty!", price: "16.50" },
   {
     name: "Barbecue Burger",
@@ -18,23 +19,24 @@ const mealLists = [
 ];
 
 const MealLists = () => {
-  const [outputAmountCart,setOutputAmountCart] = useState('')
+  // const [outputAmountCart, setOutputAmountCart] = useState("");
 
-  const inputHandler = (e) => {
-    const inputValue = e.target.value
-    setOutputAmountCart(inputValue)
-  }
+  // const inputHandler = (e) => {
+  //   const inputValue = e.target.value;
+  //   setOutputAmountCart(inputValue);
+  // };
 
-  const addToCart =() => {
-    console.log(outputAmountCart)
-    const outPutValues ={
-     name: mealLists.name,
-     description: mealLists.description,
-     amount: outputAmountCart,
-     price:mealLists.price
-    }
-  }
+  // const addToCart = () => {
+  //   console.log(outputAmountCart);
 
+  //   const outPutValues = {
+  //     name: mealLists.name,
+  //     description: mealLists.description,
+  //     amount: outputAmountCart,
+  //     price: mealLists.price,
+  //   };
+  // };
+  const AuthCtx = useContext(AuthContext)
 
   return (
     <ul className={styles.meals}>
@@ -48,9 +50,11 @@ const MealLists = () => {
             </div>
             <div>
               <h5>
-                Amount <input type="number" onChange={inputHandler}/>
+                Amount <input type="number"   onChange={AuthCtx.inputHandler} />
               </h5>
-              <button className={styles.button} onClick={addToCart}>+Add</button>
+              <button className={styles.button} onClick={AuthCtx.addToCart}>
+                +Add
+              </button>
             </div>
           </li>
           <hr></hr>
