@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
+import AuthContext from "../../store/auth-context";
 import styles from "./CartItemsModal.module.css";
 
 const Backdrop = (props) => {
@@ -7,52 +8,29 @@ const Backdrop = (props) => {
 };
 
 const Modal = (props) => {
+  const authCtx = useContext(AuthContext);
+
   return (
     <React.Fragment>
       <aside className={styles.modal}>
         <ul>
-          <li>
-            <div>
-              <h5>Schnitzel</h5>
-              <div className={styles.price}>
-                <h6>$14.23</h6>
-                <p>*2</p>
-              </div>
-              {/* <h6>$14.23 <p>*2</p></h6> */}
-            </div>
-            <div>
-              <button className={styles.negativebtn}> - </button>
-              <button className={styles.positivebtn}> + </button>
-            </div>
-          </li>
-          {/* <hr></hr>
-          <li>
-            <div>
-              <h5>Schnitzel</h5>
-              <div className={styles.price}>
-                <h6>$17.23</h6>
-                <p>*2</p>
-              </div>
-            </div>
-            <div>
-              <button className={styles.negativebtn}> - </button>
-              <button className={styles.positivebtn}> + </button>
-            </div>
-          </li>
-          <hr></hr> */}
-          {/* <li>
-            <div>
-              <h5>Schnitzel</h5>
-              <div className={styles.price}>
-                <h6>$11.23</h6>
-                <p>*1</p>
-              </div>
-            </div>
-            <div>
-              <button className={styles.negativebtn}> - </button>
-              <button className={styles.positivebtn}> + </button>
-            </div>
-          </li> */}
+          {authCtx.outPutToCartValues.map((outPutValue) => {
+            return (
+              <li key={outPutValue.id}>
+                <div>
+                  <h5>{outPutValue.name}</h5>
+                  <div className={styles.price}>
+                    <h6>{outPutValue.price}</h6>
+                    <p>*1</p>
+                  </div>
+                </div>
+                <div>
+                  <button className={styles.negativebtn}> - </button>
+                  <button className={styles.positivebtn}> + </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <hr></hr>
         <div className={styles.totalMeals}>

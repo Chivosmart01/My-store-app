@@ -1,55 +1,80 @@
-import React, { useEffect, useState } from "react";
-
-const mealLists = [
-  { name: "Sushi", description: "Finest fish and veggies", price: "22.99" },
-  { name: "Schnitzel", description: "A german specialty!", price: "16.50" },
-  {
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: "12.99",
-  },
-  {
-    name: "Green Bowl",
-    description: "Healthy ...and green...",
-    price: "18.99",
-  },
-];
+import React, { useState } from "react";
+import MealLists from "../Components/Main/MealListSection/MealList";
 
 const AuthContext = React.createContext({
   outputAmountCart: "",
-  addToCart: () => {},
-  inputHandler: () => {},
-//   outPutToCartValues: outPutValues,
+  onAddToCart: () => {},
+  onInput: () => {},
+  totalMealLists: [],
+  outPutToCartValues: {},
+  outPutToCartValues: [],
 });
 
 export const AuthContextProvider = (props) => {
   const [outputAmountCart, setOutputAmountCart] = useState("");
+  const [cartItems, setCartItems] = useState([]);
+
+  const mealLists = [
+    {
+      id: 1,
+      name: "Sushi",
+      description: "Finest fish and veggies",
+      price: "22.99",
+    },
+    {
+      id: 2,
+      name: "Schnitzel",
+      description: "A german specialty!",
+      price: "16.50",
+    },
+    {
+      name: "Barbecue Burger",
+      description: "American, raw, meaty",
+      price: "12.99",
+      id: 3,
+    },
+    {
+      name: "Green Bowl",
+      description: "Healthy ...and green...",
+      price: "18.99",
+      id: 4,
+    },
+  ];
 
   const inputHandler = (e) => {
     const inputValue = e.target.value;
     setOutputAmountCart(inputValue);
   };
 
-  let outPutValues;
+  // let outPutValues;
 
-  const addToCartHandler = (outPutValues) => {
-    console.log(outputAmountCart);
+  const onAddToCart = (mealList) => {
+    // const existingCartItemIndex = cartItems.findIndex(item => mealList.id === cartItems.id)
+    // const existingCartItem = cartItems(existingCartItemIndex)
+    // let updatedCartItem
+    // let updatedCartItems
+    // if (existingCartItem) {
+    //   updatedCartItem = {
+    //     ...existingCartItem,
+    //     amount:existingCartItem.amount + mealList.amount
+    //   }
+    //   updatedCartItems = [...cartItems]
+    //   updatedCartItems[existingCartItemIndex] = updatedCartItem
 
-    outPutValues = {
-      name: mealLists.name,
-      description: mealLists.description,
-      amount: outputAmountCart,
-      price: mealLists.price,
-    };
+    // }
+
+    setCartItems((prevState) => [...prevState, mealList]);
   };
 
+  console.log(cartItems);
   return (
     <AuthContext.Provider
       value={{
         outputAmountCart: outputAmountCart,
-        addToCart: addToCartHandler,
-        inputHandler: inputHandler,
-        outPutToCartValues: outPutValues,
+        addToCartHandler: onAddToCart,
+        onInput: inputHandler,
+        totalMealLists: mealLists,
+        outPutToCartValues: cartItems,
       }}
     >
       {props.children}

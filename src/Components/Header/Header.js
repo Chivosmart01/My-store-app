@@ -7,7 +7,6 @@ const Header = () => {
   const [modal, setModal] = useState();
 
   const openModalHandler = () => {
-    console.log(true)
     setModal(true);
   };
 
@@ -27,7 +26,6 @@ const Header = () => {
         </div>
       </div>
       {modal && <CartItemsModal onRemoveModal={removeModalHandler}/>}
-      {/* <CartItemsModal /> */}
     </header>
   );
 };
